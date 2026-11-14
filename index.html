@@ -1,49 +1,70 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Saidmark is your personal voice assistant for AirPods. Find what was said, hear the original moment, and keep the part that matters.">
-<title>Saidmark — Your AirPods, with a memory</title>
-<link rel="icon" href="icon.png">
-<link rel="stylesheet" href="style.css">
-<script src="app.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Saidmark is a personal voice assistant for AirPods. Find what was said, hear the original moment, and keep the part that matters.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Saidmark — Hear what was said</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-<header>
-<a class="brand" href="./"><img src="icon.png" alt="" width="32" height="32">Saidmark</a>
-<nav aria-label="Site navigation"><a href="#how" data-text="how">How it works</a><button id="language" type="button" aria-label="切换到简体中文">简体中文</button><a class="pill dark" href="https://apps.apple.com/app/id6834664298" data-text="store">App Store ↗</a></nav>
-</header>
-<main>
-<section class="hero">
-<p class="eyebrow" data-text="eyebrow">A personal voice assistant for AirPods</p>
-<h1 data-text="headline">Your AirPods,<br>with a memory.</h1>
-<p class="intro" data-text="intro">Record the conversations you want to remember. Ask what was said, then go straight back to the original moment.</p>
-<div class="demo" id="demo">
-<div class="demo-top"><span class="live-dot"></span><span data-text="sample">Try with a sample recording</span></div>
-<div class="prompt" id="prompt" data-text="prompt">What did I promise Alex?</div>
-<div class="choices" role="group" aria-label="Sample questions">
-<button type="button" data-question="promise" data-text="promise" aria-pressed="true">The promise</button>
-<button type="button" data-question="deadline" data-text="deadline" aria-pressed="false">The deadline</button>
-</div>
-<div class="answer">
-<p id="answer" aria-live="polite">You promised Alex you’d send the project draft.</p>
-<button id="play" class="audio" type="button"><span id="playIcon" aria-hidden="true">▶</span><span id="playLabel" data-text="play">Play original audio</span><span class="time" id="time">0:01</span></button>
-<audio id="source" src="demo.m4a" preload="none"></audio>
-<p id="audioError" role="status" hidden data-text="audioError">Audio could not play. Please try again.</p>
-</div>
-</div>
-</section>
-<section class="steps" id="how">
-<h2 data-text="steps">From conversation to something you can find.</h2>
-<div class="grid">
-<article><span class="number">01</span><h3 data-text="capture">Capture it</h3><p data-text="captureBody">Connect your AirPods to your iPhone, pick the microphone, and start a recording when you choose.</p></article>
-<article><span class="number">02</span><h3 data-text="find">Find the words</h3><p data-text="findBody">Transcribe on your iPhone. Search for a phrase or ask a question, then tap a source to hear it in context.</p></article>
-<article><span class="number">03</span><h3 data-text="keep">Keep the moment</h3><p data-text="keepBody">Trim the original recording and save just the clip you’ll want to come back to.</p></article>
-</div>
-</section>
-<section class="privacy"><div><h2 data-text="privateTitle">Your archive stays on your iPhone.</h2><p data-text="privateBody">External AI is optional. If you authorize it, Saidmark can share your question and selected transcript excerpts with the provider you configure.</p></div><a class="pill" href="https://stitch-somersault-dc1.notion.site/Saidmark-Privacy-Policy-4174045edec080e8a9c1d0eac14900ad" data-text="policy">Privacy policy ↗</a></section>
-</main>
-<footer><a class="brand" href="./">Saidmark</a><div><a href="https://stitch-somersault-dc1.notion.site/Saidmark-Support-4174045edec0801ea4ecc28342179a8f" data-text="support">Support ↗</a><a href="https://apps.apple.com/app/id6834664298" data-text="store">App Store ↗</a></div></footer>
+  <header class="header wrap">
+    <a class="brand" href="./"><img src="icon.png" alt="" width="34" height="34"> Saidmark</a>
+    <nav aria-label="Site navigation">
+      <button id="language" type="button" lang="zh-Hans">简体中文</button>
+      <a class="store" href="https://apps.apple.com/app/id6834664298">App Store <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="label" data-text="eyebrow">A personal voice assistant for AirPods</p>
+        <h1><span data-text="headline">Hear what</span><em data-text="headlineEnd">was said.</em></h1>
+        <p class="intro" data-text="intro">Record a conversation with your AirPods. Days later, find the words you remember and hear the moment for yourself.</p>
+        <a class="primary" href="#demo"><span data-text="try">Hear the example</span> <span aria-hidden="true">↓</span></a>
+      </div>
+      <section class="demo" id="demo" aria-labelledby="demo-label">
+        <div class="demo-top">
+          <h2 class="label" id="demo-label" data-text="sample">Sample recording</h2>
+          <span class="spool" data-text="audioLanguage">English audio</span>
+        </div>
+        <div class="wave" aria-hidden="true"></div>
+        <div class="demo-body">
+          <div class="choices" role="group" aria-label="Sample questions">
+            <button type="button" data-question="promise" data-text="promise" aria-pressed="true">The promise</button>
+            <button type="button" data-question="deadline" data-text="deadline" aria-pressed="false">The deadline</button>
+          </div>
+          <div class="response" aria-live="polite">
+            <p id="prompt">What did I promise Alex?</p>
+            <p id="answer">You promised Alex you’d send the project draft.</p>
+          </div>
+          <button id="play" class="audio" type="button"><span id="playIcon" aria-hidden="true">▶</span><span id="playLabel">Play original audio</span><span class="time" id="time" aria-hidden="true">0:01</span></button>
+          <audio id="source" src="demo.m4a" preload="none"></audio>
+          <p id="audioError" role="status" hidden data-text="audioError">Audio could not play. Please try again.</p>
+        </div>
+      </section>
+    </section>
+    <section class="workflow" id="how" aria-labelledby="workflow-title">
+      <div class="wrap workflow-inner">
+        <h2 id="workflow-title" data-text="steps">A long conversation.<br>One line you need.</h2>
+        <div class="steps">
+          <article><h3 data-text="capture">Record on your terms</h3><p data-text="captureBody">Connect your AirPods to your iPhone, choose the microphone, and start recording when you’re ready.</p></article>
+          <article><h3 data-text="find">Find the words</h3><p data-text="findBody">Search a transcript or ask what was said. Tap a source to hear the original audio in context.</p></article>
+          <article><h3 data-text="keep">Keep just that part</h3><p data-text="keepBody">Trim a moment from the recording and save it as a clip you can replay later.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="privacy wrap">
+      <div><h2 data-text="privateTitle">Your archive stays on your iPhone.</h2><p data-text="privateBody">External AI is optional. With your permission, Saidmark can send your question and selected transcript excerpts to the provider you configure.</p></div>
+      <a href="https://stitch-somersault-dc1.notion.site/Saidmark-Privacy-Policy-4174045edec080e8a9c1d0eac14900ad" data-text="policy">Privacy policy ↗</a>
+    </section>
+  </main>
+  <footer class="wrap">
+    <a class="brand" href="./">Saidmark</a>
+    <div><a href="https://stitch-somersault-dc1.notion.site/Saidmark-Support-4174045edec0801ea4ecc28342179a8f" data-text="support">Support ↗</a><a href="https://apps.apple.com/app/id6834664298">App Store ↗</a></div>
+  </footer>
 </body>
 </html>
